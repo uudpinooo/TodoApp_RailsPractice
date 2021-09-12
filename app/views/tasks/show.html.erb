@@ -1,2 +1,25 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<h1 class="title">タスクの詳細</h1>
+<table class="table w-100 mx-auto">
+  <tbody>
+    <tr>
+      <th scope="row" class="w-25">ID</td>
+      <td>あああ</td>
+    <tr>
+    <tr>
+      <th scope="row" class="w-25">タスク名</td>
+      <td><%= @task.id %></td>
+    <tr>
+    <tr>
+      <th scope="row" class="w-25">詳細</td>
+      <td><%= simple_format @task.description %></td>
+    <tr>
+    <tr>
+      <th scope="row" class="w-25">登録日時</td>
+      <td><%= @task.created_at %></td>
+    <tr>
+    <tr>
+      <th scope="row" class="w-25">最終更新日時</td>
+      <td><%= @task.updated_at %></td>
+    <tr>
+  </tbody>
+</table>

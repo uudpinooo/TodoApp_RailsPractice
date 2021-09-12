@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -17,7 +18,7 @@ class TasksController < ApplicationController
       flash[:notice] = "タスクを登録しました"
       redirect_to task_url(@task)
     else
-      flash[:notice] = "タスクの登録に失敗しました"
+      flash[:alert] = "タスクの登録に失敗しました"
       render new_task_path
     end
     

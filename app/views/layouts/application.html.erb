@@ -19,6 +19,12 @@
       </ul>
     <nav>
   </header>
+  <% if flash.notice.present? %>
+    <div class="alert alert-primary"><%= flash.notice %></div>
+  <% end %>
+  <% if flash.alert.present? %>
+    <div class="alert alert-danger"><%= flash.alert %></div>
+  <% end %>
   <div class="w-75 mx-auto">
     <%= yield %>
   </div>
