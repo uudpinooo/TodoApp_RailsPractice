@@ -21,9 +21,10 @@
   </header>
   <% if flash.notice.present? %>
     <div class="alert alert-primary"><%= flash.notice %></div>
-  <% end %>
-  <% if flash.alert.present? %>
-    <div class="alert alert-danger"><%= flash.alert %></div>
+  <% elsif flash.alert.present? %>
+    <% flash.alert.each do |flash_alert_message| %>
+      <div class="alert alert-danger"><%= flash_alert_message %></div>
+    <% end %>
   <% end %>
   <div class="w-75 mx-auto">
     <%= yield %>

@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       flash[:notice] = "タスクを登録しました"
       redirect_to task_url(@task)
     else
-      flash[:alert] = "タスクの登録に失敗しました"
+      flash[:alert] = @task.errors.full_messages
       render new_task_path
     end
     
