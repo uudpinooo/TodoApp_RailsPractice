@@ -1,5 +1,5 @@
 <div class="container bg-danger bg-opacity-50">
-  <%= form_with url: login_path, local: true do |f| %>
+  <%= form_with scope: :session, url: login_path, local: true do |f| %>
     <div class="form-container">
       <div class="form-group w-50">
         <%= f.label :email, 'メールアドレス' %>
@@ -7,7 +7,7 @@
       </div>
       <div class="form-group w-50 mb-5">
         <%= f.label :password, 'パスワード' %>
-        <%= f.text_field :password, class: 'form-control' %>
+        <%= f.password_field :password, class: 'form-control' %>
       </div>
       <%= f.submit 'ログイン', class: 'btn btn-danger w-50' %>
     </div>
