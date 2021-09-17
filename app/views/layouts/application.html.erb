@@ -10,15 +10,19 @@
   </head>
 
   <body>
-  <header class="bg-danger text-white mb-4 p-2 d-flex">
-    <h2>Rails Todo App</h2>
-    <nav class="navbar mx-5 w-75">
-      <ul class="nav list-unstyled h6 d-flex justify-content-between w-100">
-        <li><%= link_to 'タスク一覧', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
-        <li><%= link_to 'ログアウト', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
-      </ul>
-    <nav>
-  </header>
+  <%# session_contllerのviewかどうかでヘッダースタイル分岐 %>
+  <% unless controller.controller_name == "sessions" %>
+    <header class="bg-danger text-white mb-4 p-2 d-flex">
+      <h2>Rails Todo App</h2>
+      <nav class="navbar mx-5 w-75">
+        <ul class="nav list-unstyled h6 d-flex justify-content-between w-100">
+          <li><%= link_to 'タスク一覧', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
+          <li><%= link_to 'ログアウト', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
+        </ul>
+      <nav>
+    </header>
+  <% end %>
+
   <% if flash.notice.present? %>
     <div class="alert alert-primary"><%= flash.notice %></div>
   <% elsif flash.alert.present? %>
@@ -26,8 +30,15 @@
       <div class="alert alert-danger"><%= flash_alert_message %></div>
     <% end %>
   <% end %>
-  <div class="w-75 mx-auto">
+
+  <%# session_contllerのviewかどうかでメインスタイル分岐 %>
+  <% unless controller.controller_name == "sessions" %>
+    <div class="w-75 mx-auto">
+      <%= yield %>
+    </div>
+  <% else %>
     <%= yield %>
-  </div>
+  <% end %>
+
   </body>
 </html>
