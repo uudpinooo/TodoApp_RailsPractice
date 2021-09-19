@@ -10,8 +10,8 @@
   </head>
 
   <body>
-  <%# session_contllerのviewかどうかでヘッダースタイル分岐 %>
-  <% unless controller.controller_name == "sessions" %>
+  <%# session または users_contllerのviewかどうかでヘッダースタイル分岐 %>
+  <% unless controller.controller_name == "sessions" || "users" %>
     <header class="bg-danger text-white mb-4 p-2 d-flex">
       <h2>Rails Todo App</h2>
       <nav class="navbar mx-5 w-75">
@@ -31,8 +31,8 @@
     <% end %>
   <% end %>
 
-  <%# session_contllerのviewかどうかでメインスタイル分岐 %>
-  <% unless controller.controller_name == "sessions" %>
+  <%# session または users_contllerのviewかどうかでメインスタイル分岐 %>
+  <% unless controller.controller_name == "sessions" || "users" %>
     <div class="w-75 mx-auto">
       <%= yield %>
     </div>
