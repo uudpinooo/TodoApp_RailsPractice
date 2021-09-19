@@ -17,7 +17,7 @@
       <nav class="navbar mx-5 w-75">
         <ul class="nav list-unstyled h6 d-flex justify-content-between w-100">
           <li><%= link_to 'タスク一覧', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
-          <li><%= link_to 'ログアウト', tasks_path, class: "nav-item text-white text-decoration-none" %></li>
+          <li><%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-item text-white text-decoration-none" %></li>
         </ul>
       <nav>
     </header>
