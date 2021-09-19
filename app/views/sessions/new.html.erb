@@ -1,1 +1,10 @@
-<%= render partial: 'layouts/form', locals: {next_page: "ユーザー登録は", link_name: "こちら", link_path: users_new_path} %>
+<%= render partial: 'layouts/form',
+  locals: {
+    scope: :session,
+    url: login_path,
+    submit_name: "ログイン",
+    next_page: "ユーザー登録は",
+    link_name: "こちら",
+    path: users_path
+  }
+%>
