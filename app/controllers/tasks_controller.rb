@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     user = current_user
 
     if @task.save
-      TaskMailer.creation_email(@task, user).deliver_now
+      TaskMailer.create_task(@task, user).deliver_now
       flash[:notice] = "タスクを登録しました"
       redirect_to task_url(@task)
     else
@@ -28,6 +28,8 @@ class TasksController < ApplicationController
 
   def edit
     @task = current_user.tasks.find(params[:id])
+    user = current_user
+    TaskMailer.edit_task(@task, user).deliver_now
   end
 
   def update
@@ -40,6 +42,8 @@ class TasksController < ApplicationController
   def destroy
     @task = current_user.tasks.find(params[:id])
     @task.destroy
+    user = current_user
+    TaskMailer.destroy_task(@task, user).deliver_now
     flash[:notice] = "#{@task.name}を削除しました"
 
     # 遷移元のがindexアクションの場合はajax通信
