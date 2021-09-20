@@ -13,8 +13,10 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+    user = current_user
 
     if @task.save
+      TaskMailer.creation_email(@task, user).deliver_now
       flash[:notice] = "タスクを登録しました"
       redirect_to task_url(@task)
     else

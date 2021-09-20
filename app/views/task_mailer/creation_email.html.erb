@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+
+  <body>
+    <h1><%= @user.name %>さん タスクが新規されました</h1>
+    <p>【タスク名】<%= @task.name %><br /></p>
+    <p>【タスク詳細】<%= @task.description %><br /></p>
+    <p>【登録日】<%= l @task.created_at %><br /></p>
+    <br />
+    <p>忘れずに取り組みましょう☺️</p>
+  </body>
+</html>
