@@ -39,7 +39,15 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
     @task.destroy
     flash[:notice] = "#{@task.name}を削除しました"
-    head :no_content
+
+    # 遷移元のがindexアクションの場合はajax通信
+    path = Rails.application.routes.recognize_path(request.referer)
+    if path[:action] === "index"
+      head :no_content
+    else
+      redirect_to tasks_url
+    end
+
   end
 
   private
