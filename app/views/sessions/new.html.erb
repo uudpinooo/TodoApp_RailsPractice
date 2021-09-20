@@ -1,10 +1,16 @@
-<%= render partial: 'layouts/form',
-  locals: {
-    scope: :session,
-    url: login_path,
-    submit_name: "ログイン",
-    next_page: "ユーザー登録は",
-    link_name: "こちら",
-    path: users_path
-  }
-%>
+<div class="container bg-danger bg-opacity-50">
+  <%= form_with scope: :session, url: login_path, local: true do |f| %>
+    <div class="form-container">
+      <div class="form-group w-50">
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group w-50 mb-5">
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <%= f.submit 'ログイン', class: 'btn btn-danger w-50 mb-4' %>
+      <p>ユーザー登録は<%= link_to 'こちら', users_path, class: "text-dark" %></p>
+    </div>
+  <% end %>
+</div>
