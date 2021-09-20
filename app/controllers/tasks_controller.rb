@@ -39,7 +39,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
     @task.destroy
     flash[:notice] = "#{@task.name}を削除しました"
-    redirect_to tasks_url
+    head :no_content
   end
 
   private
