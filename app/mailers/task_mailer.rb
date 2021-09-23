@@ -5,7 +5,6 @@ class TaskMailer < ApplicationMailer
     mail(
       subject: 'タスクを作成しました',
       to: @user.email,
-      from: @user.email,
     )
   end
 
@@ -15,7 +14,6 @@ class TaskMailer < ApplicationMailer
     mail(
       subject: 'タスクを編集しました',
       to: @user.email,
-      from: @user.email,
     )
   end
 
@@ -25,7 +23,6 @@ class TaskMailer < ApplicationMailer
     mail(
       subject: 'タスクを削除しました',
       to: @user.email,
-      from: @user.email,
     )
   end
 end
