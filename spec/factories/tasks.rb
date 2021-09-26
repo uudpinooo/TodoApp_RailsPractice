@@ -1,7 +1,7 @@
-Factorybot.define do
+FactoryBot.define do
   factory :task do
-    name { 'テストを書く' }
-    description { 'RSpec, Capybara, Factorybotでテストを書く' }
+    name { 'タスク名' }
+    description { 'タスクの説明を書く' }
     user
   end
 end
