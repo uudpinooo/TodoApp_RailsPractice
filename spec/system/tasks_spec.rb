@@ -15,14 +15,16 @@ describe 'タスク管理機能', type: :system do
     click_button 'ログイン'
   end
 
+  # example(itなどの期待する挙動)の共通化
+  # it_behaves_likeで呼び出す
+  shared_examples_for 'ユーザーAが作成したタスクが表示される' do
+    it { expect(page).to have_content 'ユーザーAのタスク1' }
+  end
+
   describe '一覧機能表示' do
     context 'ユーザーAがログインしているとき' do
       let(:login_user) { user_a }
-
-      it 'ユーザーAが作成したタスクが表示される' do
-        # 作成済みタスクの名称が画面上に表示されていることを確認
-        expect(page).to have_content 'ユーザーAのタスク1'
-      end
+      it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
 
     context 'ユーザーBがログインしているとき' do
@@ -43,9 +45,7 @@ describe 'タスク管理機能', type: :system do
         visit task_path(task_a)
       end
 
-      it 'ユーザーAが作成したタスクが表示される' do
-        expect(page).to have_content 'ユーザーAのタスク1'
-      end
+      it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
   end
 end
