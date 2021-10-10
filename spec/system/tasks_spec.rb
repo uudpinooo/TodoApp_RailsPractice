@@ -48,4 +48,30 @@ describe 'タスク管理機能', type: :system do
       it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
   end
+
+  describe '新規作成機能' do
+    let(:login_user) { user_a }
+
+    before do
+      visit new_task_path
+      fill_in 'タスク名', with: task_name
+      click_button '登録'
+    end
+
+    context '新規作成画面でタスク名を入力したとき' do
+      let(:task_name) { 'タスク名を入力して新規作成する' }
+
+      it 'タスクが正常に登録される' do
+        expect(page).to have_selector '.alert-primary', text: 'タスクを登録しました'
+      end
+    end
+
+    context '新規作成画面でタスク名を入力しなかったとき' do
+      let(:task_name) { '' }
+
+      it 'エラーになる' do
+        expect(page).to have_selector '.alert-danger', text: 'タスク名を入力してください'
+      end
+    end
+  end
 end

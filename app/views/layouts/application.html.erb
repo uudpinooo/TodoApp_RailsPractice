@@ -23,6 +23,7 @@
     </header>
   <% end %>
 
+  <%# Flashメッセージがあれば表示 %>
   <% if flash.notice.present? %>
     <div class="alert alert-primary"><%= flash.notice %></div>
   <% elsif flash.alert.present? %>
